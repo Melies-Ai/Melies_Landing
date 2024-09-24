@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500&display=swap");
 
 /* Ajout du style pour la bande horizontale */
 .stripe-container {
@@ -13,92 +13,101 @@
 }
 
 .stripe-container::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        linear-gradient(to bottom,
-            transparent 2px, #151515 2px 8px,
-            transparent 8px 9.625px, #151515 9.625px 15.625px,
-            transparent 15.625px 16.875px, #151515 16.875px 22.875px,
-            transparent 22.875px 23.75px, #151515 23.75px 29.75px,
-            transparent 29.75px 30.25px, #151515 30.25px);
+    background: linear-gradient(to bottom, transparent 2px, #151515 2px 8px, transparent 8px 9.625px, #151515 9.625px 15.625px, transparent 15.625px 16.875px, #151515 16.875px 22.875px, transparent 22.875px 23.75px, #151515 23.75px 29.75px, transparent 29.75px 30.25px, #151515 30.25px);
 }
 
 :root {
-  --color-bg: #151515;
-  --color-text: #8B8B8B;
-  --color-accent: #3a3a3a;
-  --color-white: #fff;
-  --color-border: #383838;
-  --gradient-title: linear-gradient(to right, #FEEED9, #A8A298);
-  
-  --font-size-base: 14px; /* Changé à 16px pour faciliter les calculs */
-  --font-size-body: 1rem;
-  --font-size-h1: 1rem;
-  --font-size-h2: 1rem;
-  --font-size-h3: 1rem;
-  
-  --line-height: 1.5;
-  --spacing: 1rem;
+    --color-bg: #151515;
+    --color-text: #8b8b8b;
+    --color-accent: #3a3a3a;
+    --color-white: #fff;
+    --color-border: #383838;
+    --gradient-title: linear-gradient(to right, #feeed9, #a8a298);
+
+    --font-size-base: 14px; /* Changé à 16px pour faciliter les calculs */
+    --font-size-body: 1rem;
+    --font-size-h1: 1rem;
+    --font-size-h2: 1rem;
+    --font-size-h3: 1rem;
+
+    --line-height: 1.5;
+    --spacing: 1rem;
 }
 
 /* Base styles */
 html {
-  font-size: var(--font-size-base);
-  box-sizing: border-box;
+    font-size: var(--font-size-base);
+    box-sizing: border-box;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height);
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-  max-width: 42.5rem; /* 600px / 16px */
+    font-family: "Inter", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height);
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    max-width: 42.5rem; /* 600px / 16px */
 }
 
 main {
-  border-left: 0.5px solid var(--color-border);
-  border-right: 0.5px solid var(--color-border);
+    border-left: 0.5px solid var(--color-border);
+    border-right: 0.5px solid var(--color-border);
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-  letter-spacing: 0;
-  margin-top: 0;
-  margin-bottom: 0px;
-  text-transform: lowercase;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-top: 0;
+    margin-bottom: 0px;
+    text-transform: lowercase;
 }
 
 .gradient-text {
-  background: var(--gradient-title);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-  width: fit-content;
+    background: var(--gradient-title);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    width: fit-content;
 }
 
-h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); }
-h3 { font-size: var(--font-size-h3); }
+h1 {
+    font-size: var(--font-size-h1);
+}
+h2 {
+    font-size: var(--font-size-h2);
+}
+h3 {
+    font-size: var(--font-size-h3);
+}
 
-p, ul, ol {
-  font-size: var(--font-size-body);
-  margin-bottom: var(--spacing);
-  font-weight: 300; 
+p,
+ul,
+ol {
+    font-size: var(--font-size-body);
+    margin-bottom: var(--spacing);
+    font-weight: 300;
 }
 
 .quote {
@@ -107,180 +116,183 @@ p, ul, ol {
 
 /* Header */
 .site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem; /* 20px / 16px */
-  border-left: 0.5px solid var(--color-border);
-  border-right: 0.5px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem; /* 20px / 16px */
+    border-left: 0.5px solid var(--color-border);
+    border-right: 0.5px solid var(--color-border);
 }
 
 .socials {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem; /* 10px / 16px */
+    display: flex;
+    align-items: center;
+    gap: 0.625rem; /* 10px / 16px */
 }
 
 .socials p {
-  margin: 0;
-  font-style: italic;
+    margin: 0;
+    font-style: italic;
 }
 
 .site-title {
-  padding-top: 1px;
+    padding-top: 1px;
+    text-transform: none;
 }
 
 .logo {
-  display: flex;
+    display: flex;
 }
 
 .site-logo {
-  width: auto; 
-  height: 1.25rem; /* 20px / 16px */
-  margin-right: 0.3125rem; /* 5px / 16px */
+    width: auto;
+    height: 1.25rem; /* 20px / 16px */
+    margin-right: 0.3125rem; /* 5px / 16px */
 }
 
 .logo .site-title {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 1rem; /* 16px / 16px */
-  font-weight: 500;
-  margin: 0;
-  color: var(--color-white);
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1rem; /* 16px / 16px */
+    font-weight: 500;
+    margin: 0;
+    color: var(--color-white);
 }
 
 /* Main content */
-.hero__title {
-  font-size: var(--font-size-h2);
-  text-transform: none;
+.hero-title {
+    font-size: var(--font-size-h2);
+    text-transform: none;
 }
 
 /* Styles des sections */
 section {
-  width: 100%;
-  border-bottom: 0.5px solid #383838;
-  padding: 2.5rem 1.25rem; /* 40px 20px / 16px */
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem; /* 40px / 16px */
+    width: 100%;
+    border-bottom: 0.5px solid #383838;
+    padding: 2.5rem 1.25rem; /* 40px 20px / 16px */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* 40px / 16px */
 }
 
-section h1, section h2, section h3, section h4, section h5, section h6 {
-  text-transform: lowercase;
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+    text-transform: lowercase;
 }
 
 /* Styles des sous-blocs */
 .sub-block {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Bouton Twitter */
 .twitter-button {
-  width: 1.25rem; /* 20px / 16px */
-  height: 1.25rem; /* 20px / 16px */
-  border-radius: 0.25rem; /* 4px / 16px */
-  border: 0.5px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text);
-  font-size: 0.625rem; /* 10px / 16px */
-  text-decoration: none;
+    width: 1.25rem; /* 20px / 16px */
+    height: 1.25rem; /* 20px / 16px */
+    border-radius: 0.25rem; /* 4px / 16px */
+    border: 0.5px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    font-size: 0.625rem; /* 10px / 16px */
+    text-decoration: none;
 }
 
 .twitter-button:hover {
-  background-color: var(--color-accent);
+    background-color: var(--color-accent);
 }
 
 .image-container img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .site-footer {
-  border-left: 0.5px solid var(--color-border);
-  border-right: 0.5px solid var(--color-border);
-  padding-top: 1.25rem; /* 20px / 16px */
+    border-left: 0.5px solid var(--color-border);
+    border-right: 0.5px solid var(--color-border);
+    padding-top: 1.25rem; /* 20px / 16px */
 }
 
 .site-footer > div:first-child {
-  padding-left: 1.25rem; /* 20px / 16px */
-  padding-right: 1.25rem; /* 20px / 16px */
+    padding-left: 1.25rem; /* 20px / 16px */
+    padding-right: 1.25rem; /* 20px / 16px */
 }
 
 .site-footer img {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 .copyright {
-  text-align: center;
-  padding: 0.625rem 0; /* 10px / 16px */
-  font-size: 0.8em;
+    text-align: center;
+    padding: 0.625rem 0; /* 10px / 16px */
+    font-size: 0.8em;
 }
 
 footer img {
-  width: 100%;
+    width: 100%;
 }
 
 /* Ajoutez ceci à votre fichier CSS */
 ul {
-  list-style-type: none; /* Supprime les puces par défaut */
-  padding-left: 0; /* Supprime le padding par défaut */
-  margin-top: 0px;
+    list-style-type: none; /* Supprime les puces par défaut */
+    padding-left: 0; /* Supprime le padding par défaut */
+    margin-top: 0px;
 }
 
 ul li {
-  padding-left: 1em; /* Ajoute un peu d'espace à gauche */
-  text-indent: -1em; /* Crée un retrait négatif pour le tiret */
+    padding-left: 1em; /* Ajoute un peu d'espace à gauche */
+    text-indent: -1em; /* Crée un retrait négatif pour le tiret */
 }
 
 ul li::before {
-  content: "- "; /* Ajoute un tiret avant chaque élément de liste */
-  color: var(--color-text); /* Utilise la couleur de texte définie */
+    content: "- "; /* Ajoute un tiret avant chaque élément de liste */
+    color: var(--color-text); /* Utilise la couleur de texte définie */
 }
 
 /* Styles pour les appareils mobiles */
-@media screen and (max-width: 600px) { /* 600px / 16px */
-  body {
-    font-size: 0.875rem; /* 14px / 16px */
-    max-width: 100%;
-    padding: 0 0.9375rem; /* 15px / 16px */
-  }
+@media screen and (max-width: 600px) {
+    /* 600px / 16px */
+    body {
+        font-size: 0.875rem; /* 14px / 16px */
+        max-width: 100%;
+        padding: 0 0.9375rem; /* 15px / 16px */
+    }
 
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.9375rem; /* 15px / 16px */
-  }
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.9375rem; /* 15px / 16px */
+    }
 
-  .socials {
-    margin-top: 0.625rem; /* 10px / 16px */
-  }
+    .socials {
+        margin-top: 0.625rem; /* 10px / 16px */
+    }
 
-  .hero__title {
-    font-size: 1rem; /* 24px / 16px */
-  }
+    .hero-title {
+        font-size: 1rem; /* 24px / 16px */
+    }
 
-  section {
-    padding: 1.875rem 0.9375rem; /* 30px 15px / 16px */
-    gap: 1rem;
-  }
+    section {
+        padding: 1.875rem 0.9375rem; /* 30px 15px / 16px */
+        gap: 1rem;
+    }
 
-  .image-container {
-    margin-top: 1.25rem; /* 20px / 16px */
-  }
+    .image-container {
+        margin-top: 1.25rem; /* 20px / 16px */
+    }
 
-  .quote {
-    font-size: 0.9rem; /* 14.4px / 16px */
-  }
+    .sub-block {
+        margin-bottom: 1.875rem; /* 30px / 16px */
+    }
 
-  .sub-block {
-    margin-bottom: 1.875rem; /* 30px / 16px */
-  }
-
-  .twitter-button {
-    width: 1.875rem; /* 30px / 16px */
-    height: 1.875rem; /* 30px / 16px */
-    font-size: 0.875rem; /* 14px / 16px */
-  }
+    .twitter-button {
+        width: 1.875rem; /* 30px / 16px */
+        height: 1.875rem; /* 30px / 16px */
+        font-size: 0.875rem; /* 14px / 16px */
+    }
 }
