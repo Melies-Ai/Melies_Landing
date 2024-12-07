@@ -1,3 +1,7 @@
+/* 
+    Languagues
+*/
+
 const availableLanguages = ["fr", "en"];
 // Call updateContent() on page load
 window.addEventListener("DOMContentLoaded", async () => {
@@ -34,3 +38,118 @@ function updateContent(langData) {
         }
     });
 }
+
+/* 
+    Animation
+*/
+
+function toggle() {
+    document.body.classList.add("animation-ready");
+    document.body.classList.toggle("dark");
+}
+
+// Group observer options
+const observerOptions = {
+    section: {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+    },
+    footer: {
+        root: null,
+        rootMargin: "200px 0px",
+        threshold: 0.1,
+    },
+};
+
+// Group observers
+const observers = {
+    section: new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.classList.contains("initial-section")) {
+                requestAnimationFrame(() => {
+                    const index = Array.from(document.querySelectorAll("section")).indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add("visible");
+                    }, index * 20);
+                });
+                observers.section.unobserve(entry.target);
+            }
+        });
+    }, observerOptions.section),
+
+    footer: new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        entry.target.classList.add("visible");
+                    }, 50);
+                });
+                observers.footer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions.footer),
+};
+
+// Wait for the page to be fully loaded
+window.addEventListener("load", function () {
+    // Initialize animation
+    document.body.classList.add("animation-ready");
+
+    // Prepare sections for animation
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section, index) => {
+        if (index < 2) {
+            section.classList.add("initial-section");
+        } else {
+            observers.section.observe(section);
+        }
+    });
+
+    // Observe footer separately
+    const footer = document.querySelector(".content-wrapper > footer");
+    if (footer) {
+        observers.footer.observe(footer);
+    }
+
+    // Animation sequence
+    setTimeout(() => {
+        toggle(); // Trigger transition to night mode
+
+        // Display stripes after delay
+        setTimeout(() => {
+            document.body.classList.add("show-stripe");
+
+            // Display main structure
+            setTimeout(() => {
+                document.body.classList.add("show-structure");
+
+                // Display logo
+                setTimeout(() => {
+                    document.body.classList.add("show-logo");
+
+                    // Display initial sections one by one
+                    const initialSections = document.querySelectorAll(".initial-section");
+                    initialSections.forEach((section, index) => {
+                        setTimeout(() => {
+                            document.body.classList.add(`show-content-${index}`);
+                        }, 500 + index * 300);
+                    });
+                }, 300);
+            }, 1000);
+        }, 500); // Delay before displaying stripes
+    }, 700);
+});
+
+// Handle user interactions
+document.addEventListener("keydown", function (event) {
+    if (event.keyCode === 32) {
+        event.preventDefault();
+        toggle();
+    }
+});
+
+document.addEventListener("click", function () {
+    toggle();
+});

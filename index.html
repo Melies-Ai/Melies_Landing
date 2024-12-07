@@ -1,208 +1,279 @@
-<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title data-i18n="title"></title>
-        <meta name="description" data-i18n="meta_description" />
-        <meta name="keywords" data-i18n="meta_keywords" />
-        <!-- Favicons -->
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <div class="stripe-container"></div>
-        <header class="site-header">
-            <div class="logo">
-                <img src="images/melies-logo.svg" alt="" data-i18n="header_logo_alt" class="site-logo" />
-                <h1 class="site-title" data-i18n="header_site_title"></h1>
+
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="title"></title>
+  <meta name="description" data-i18n="meta_description" />
+  <meta name="keywords" data-i18n="meta_keywords" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://melies.ai">
+  <meta name="theme-color" content="#1f140e">
+  <meta property="og:title" data-i18n="meta_og_title" />
+  <meta property="og:description" data-i18n="meta_og_description" />
+  <meta property="og:image" content="https://melies.ai/images/melies-logo.svg">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="dappled-light">
+
+    <div id="glow"></div>
+    <div id="glow-bounce"></div>
+    <div class="perspective">
+      <div id="leaves">
+        <svg style="width: 0; height: 0; position: absolute;">
+          <defs>
+            <filter id="wind" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" numOctaves="2" seed="1">
+                <animate attributeName="baseFrequency" dur="16s" keyTimes="0;0.33;0.66;1"
+                  values="0.005 0.003;0.01 0.009;0.008 0.004;0.005 0.003" repeatCount="indefinite" />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic">
+                <animate attributeName="scale" dur="20s" keyTimes="0;0.25;0.5;0.75;1" values="45;55;75;55;45"
+                  repeatCount="indefinite" />
+              </feDisplacementMap>
+            </filter>
+          </defs>
+        </svg>
+      </div>
+      <div id="blinds">
+        <div class="shutters">
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+          <div class="shutter"></div>
+        </div>
+        <div class="vertical">
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+    <div id="progressive-blur">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  
+  <div class="content-wrapper">
+    <div class="stripe-container"></div>
+    <header class="site-header">
+        <div class="logo">
+            <img src="images/melies-logo.svg" alt="Melies.ai Logo" width="20" height="20" class="site-logo">
+            <h1 class="site-title" data-i18n="header_site_title"></h1>
             </div>
             <div class="socials">
                 <em data-i18n="header_socials_text"></em>
                 <a href="https://x.com/MeliesAi" class="twitter-button" aria-label="" data-i18n="header_twitter_aria_label">𝕏</a>
             </div>
-        </header>
-
-        <main class="main-content" role="main">
-            <section class="hero">
-                <h2 class="hero-title gradient-text">
-                    <span data-i18n="hero_title_1_part1"></span><br />
-                    <span data-i18n="hero_title_1_part2"></span>
-                </h2>
-                <h2 class="hero-title gradient-text" data-i18n="hero_title_2"></h2>
-            </section>
-
-            <section class="technological-convergence">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="technological_convergence_title"></h2>
-                    <div class="convergence-content">
-                        <p data-i18n="technological_convergence_content_1"></p>
-                        <p data-i18n="technological_convergence_content_2"></p>
-                    </div>
-                </div>
-                <div class="image-container">
-                    <img src="images/mission.png" alt="" data-i18n="image_mission_alt" />
-                    <blockquote class="quote" data-i18n="quote_1"></blockquote>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="our_vision"></h2>
-                    <div class="vision-content">
-                        <p data-i18n="vision_content_1"></p>
-                        <p data-i18n="vision_content_2"></p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="technology">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="simulation_production"></h2>
-                    <div class="technology-content">
-                        <p data-i18n="technology_content_1"></p>
-                        <p data-i18n="technology_content_2"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="specialized_agents"></h2>
-                    <div class="technology-content">
-                        <p data-i18n="technology_content_3"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="chain_of_thought"></h2>
-                    <div class="technology-content">
-                        <p data-i18n="technology_content_4"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="advanced_planning"></h2>
-                    <div class="technology-content">
-                        <p data-i18n="technology_content_5"></p>
-                    </div>
-                </div>
-                <div class="image-container">
-                    <img src="images/simulation.png" alt="" data-i18n="image_simulation_alt" />
-                    <blockquote class="quote" data-i18n="quote_2"></blockquote>
-                </div>
-            </section>
-
-            <section class="features">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="creative_flexibility"></h2>
-                    <div class="features-content">
-                        <p data-i18n="features_content_1"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="scenario_coherence"></h2>
-                    <div class="features-content">
-                        <p data-i18n="features_content_2"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="character_development"></h2>
-                    <div class="features-content">
-                        <p data-i18n="features_content_3"></p>
-                    </div>
-                </div>
-                <div class="image-container">
-                    <img src="images/character.png" alt="" data-i18n="image_character_alt" />
-                    <blockquote class="quote" data-i18n="quote_3"></blockquote>
-                </div>
-            </section>
-
-            <section class="ambition">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="our_ambition"></h2>
-                    <div class="ambition-content">
-                        <p data-i18n="ambition_content_1"></p>
-                        <p data-i18n="ambition_content_2"></p>
-                    </div>
-                </div>
-                <div class="image-container">
-                    <img src="images/vision.png" alt="" data-i18n="image_vision_alt" />
-                    <blockquote class="quote" data-i18n="quote_4"></blockquote>
-                </div>
-            </section>
-
-            <section class="beyond-traditional">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="beyond_traditional"></h2>
-                    <div class="beyond-traditional-content">
-                        <p data-i18n="beyond_traditional_content_1"></p>
-                        <p data-i18n="beyond_traditional_content_2"></p>
-                        <p data-i18n="beyond_traditional_content_3"></p>
-                    </div>
-                </div>
-                <div class="image-container">
-                    <img src="images/filmmaking.png" alt="" data-i18n="image_filmmaking_alt" />
-                </div>
-            </section>
-
-            <section class="empower-creators">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="empower_creators"></h2>
-                    <div class="empower-creators-content">
-                        <p data-i18n="empower_creators_content_1"></p>
-                        <p data-i18n="empower_creators_content_2"></p>
-                    </div>
-                </div>
-                <div class="image-container">
-                    <img src="images/creators.png" alt="" data-i18n="image_creators_alt" />
-                    <blockquote class="quote" data-i18n="quote_5"></blockquote>
-                </div>
-            </section>
-
-            <section class="future-vision">
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="iterative_approach"></h2>
-                    <div class="iterative-approach-content">
-                        <p data-i18n="iterative_approach_content_1"></p>
-                        <ul>
-                            <li data-i18n="iterative_approach_list_1"></li>
-                            <li data-i18n="iterative_approach_list_2"></li>
-                            <li data-i18n="iterative_approach_list_3"></li>
-                        </ul>
-                        <p data-i18n="iterative_approach_content_2"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="future_perspectives"></h2>
-                    <div class="future-perspectives-content">
-                        <p data-i18n="future_perspectives_content_1"></p>
-                        <ul>
-                            <li data-i18n="future_perspectives_list_1"></li>
-                            <li data-i18n="future_perspectives_list_2"></li>
-                            <li data-i18n="future_perspectives_list_3"></li>
-                            <li data-i18n="future_perspectives_list_4"></li>
-                        </ul>
-                        <p data-i18n="future_perspectives_content_2"></p>
-                    </div>
-                </div>
-                <div class="sub-block">
-                    <h2 class="section-title gradient-text" data-i18n="future_creation"></h2>
-                    <div class="future-creation-content">
-                        <p data-i18n="future_creation_content_1"></p>
-                        <p data-i18n="future_creation_content_2"></p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="site-footer">
-                <div>
-                    <p class="gradient-text" data-i18n="footer_text"></p>
-                </div>
-                <div class="image-footer">
-                    <img src="images/melies.png" alt="" data-i18n="image_footer_alt" />
+    </header>
+    <main class="main-content" role="main">
+        <section class="hero">
+            <h2 class="hero-title gradient-text">
+                <span data-i18n="hero_title_1_part1"></span><br />
+                <span data-i18n="hero_title_1_part2"></span>
+            </h2>
+            <h2 class="hero-title gradient-text" data-i18n="hero_title_2"></h2>
+        </section>
+    
+        <section class="technological-convergence">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="technological_convergence_title"></h2>
+                <div class="convergence-content">
+                    <p data-i18n="technological_convergence_content_1"></p>
+                    <p data-i18n="technological_convergence_content_2"></p>
                 </div>
             </div>
-            <div class="copyright">
-                <p data-i18n="footer_copyright"></p>
+            <div class="image-container">
+                <img src="images/mission.png" alt="" data-i18n="image_mission_alt" />
+                <blockquote class="quote" data-i18n="quote_1"></blockquote>
             </div>
-        </footer>
-
-        <script src="main.js"></script>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="our_vision"></h2>
+                <div class="vision-content">
+                    <p data-i18n="vision_content_1"></p>
+                    <p data-i18n="vision_content_2"></p>
+                </div>
+            </div>
+        </section>
+    
+        <section class="technology">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="simulation_production"></h2>
+                <div class="technology-content">
+                    <p data-i18n="technology_content_1"></p>
+                    <p data-i18n="technology_content_2"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="specialized_agents"></h2>
+                <div class="technology-content">
+                    <p data-i18n="technology_content_3"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="chain_of_thought"></h2>
+                <div class="technology-content">
+                    <p data-i18n="technology_content_4"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="advanced_planning"></h2>
+                <div class="technology-content">
+                    <p data-i18n="technology_content_5"></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/simulation.png" alt="" data-i18n="image_simulation_alt" />
+                <blockquote class="quote" data-i18n="quote_2"></blockquote>
+            </div>
+        </section>
+    
+        <section class="features">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="creative_flexibility"></h2>
+                <div class="features-content">
+                    <p data-i18n="features_content_1"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="scenario_coherence"></h2>
+                <div class="features-content">
+                    <p data-i18n="features_content_2"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="character_development"></h2>
+                <div class="features-content">
+                    <p data-i18n="features_content_3"></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/character.png" alt="" data-i18n="image_character_alt" />
+                <blockquote class="quote" data-i18n="quote_3"></blockquote>
+            </div>
+        </section>
+    
+        <section class="ambition">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="our_ambition"></h2>
+                <div class="ambition-content">
+                    <p data-i18n="ambition_content_1"></p>
+                    <p data-i18n="ambition_content_2"></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/vision.png" alt="" data-i18n="image_vision_alt" />
+                <blockquote class="quote" data-i18n="quote_4"></blockquote>
+            </div>
+        </section>
+    
+        <section class="beyond-traditional">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="beyond_traditional"></h2>
+                <div class="beyond-traditional-content">
+                    <p data-i18n="beyond_traditional_content_1"></p>
+                    <p data-i18n="beyond_traditional_content_2"></p>
+                    <p data-i18n="beyond_traditional_content_3"></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/filmmaking.png" alt="" data-i18n="image_filmmaking_alt" />
+            </div>
+        </section>
+    
+        <section class="empower-creators">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="empower_creators"></h2>
+                <div class="empower-creators-content">
+                    <p data-i18n="empower_creators_content_1"></p>
+                    <p data-i18n="empower_creators_content_2"></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/creators.png" alt="" data-i18n="image_creators_alt" />
+                <blockquote class="quote" data-i18n="quote_5"></blockquote>
+            </div>
+        </section>
+    
+        <section class="future-vision">
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="iterative_approach"></h2>
+                <div class="iterative-approach-content">
+                    <p data-i18n="iterative_approach_content_1"></p>
+                    <ul>
+                        <li data-i18n="iterative_approach_list_1"></li>
+                        <li data-i18n="iterative_approach_list_2"></li>
+                        <li data-i18n="iterative_approach_list_3"></li>
+                    </ul>
+                    <p data-i18n="iterative_approach_content_2"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="future_perspectives"></h2>
+                <div class="future-perspectives-content">
+                    <p data-i18n="future_perspectives_content_1"></p>
+                    <ul>
+                        <li data-i18n="future_perspectives_list_1"></li>
+                        <li data-i18n="future_perspectives_list_2"></li>
+                        <li data-i18n="future_perspectives_list_3"></li>
+                        <li data-i18n="future_perspectives_list_4"></li>
+                    </ul>
+                    <p data-i18n="future_perspectives_content_2"></p>
+                </div>
+            </div>
+            <div class="sub-block">
+                <h2 class="section-title gradient-text" data-i18n="future_creation"></h2>
+                <div class="future-creation-content">
+                    <p data-i18n="future_creation_content_1"></p>
+                    <p data-i18n="future_creation_content_2"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="site-footer">
+            <div>
+                <p class="gradient-text" data-i18n="footer_text"></p>
+            </div>
+            <div class="image-footer">
+                <img src="images/melies.png" alt="" data-i18n="image_footer_alt" />
+            </div>
+        </div>
+        <div class="copyright">
+            <p data-i18n="footer_copyright"></p>
+        </div>
+    </footer>
+    
+    <script src="main.js"></script>
     </body>
-</html>
+    
+    </html>

@@ -1,15 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500&display=swap");
 
+.content-wrapper {
+    isolation: isolate;
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    border-left: 1px solid var(--border-day);
+    border-right: 1px solid var(--border-day);
+    transition: border-color 1s var(--timing-fn);
+    display: flex;
+    flex-direction: column;
+}
+
 /* Ajout du style pour la bande horizontale */
 .stripe-container {
     width: 100%;
     height: 35px;
-    background: linear-gradient(to bottom, #383838, #201f1b);
     position: relative;
     overflow: hidden;
-    border-left: 0.5px solid var(--color-border);
-    border-right: 0.5px solid var(--color-border);
+    border-left: none;
+    border-right: none;
 }
 
 .stripe-container::before {
@@ -19,18 +30,30 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 2px, #151515 2px 8px, transparent 8px 9.625px, #151515 9.625px 15.625px, transparent 15.625px 16.875px, #151515 16.875px 22.875px, transparent 22.875px 23.75px, #151515 23.75px 29.75px, transparent 29.75px 30.25px, #151515 30.25px);
+    background: linear-gradient(
+        to bottom,
+        rgb(78 53 45 / 13%) 0 2.5px,
+        transparent 2.5px 7.5px,
+        rgb(78 53 45 / 10%) 7.5px 9.5px,
+        transparent 9.5px 14.5px,
+        rgb(78 53 45 / 8%) 14.5px 16px,
+        transparent 16px 21px,
+        rgb(78 53 45 / 6%) 21px 22px,
+        transparent 22px 27px,
+        rgb(78 53 45 / 4%) 27px 27.5px,
+        transparent 27.5px
+    );
+    transition: background 1s var(--timing-fn);
 }
 
 :root {
     --color-bg: #151515;
-    --color-text: #8b8b8b;
+    --color-text: #626262;
     --color-accent: #3a3a3a;
     --color-white: #fff;
-    --color-border: #383838;
-    --gradient-title: linear-gradient(to right, #feeed9, #a8a298);
 
-    --font-size-base: 14px; /* Changé à 16px pour faciliter les calculs */
+    --gradient-title: linear-gradient(to right, #1f140e, #827d74);
+    --font-size-base: 14px;
     --font-size-body: 1rem;
     --font-size-h1: 1rem;
     --font-size-h2: 1rem;
@@ -38,6 +61,13 @@
 
     --line-height: 1.5;
     --spacing: 1rem;
+    --border-color: 78, 53, 45;
+    --border-opacity: 13%;
+    --transition-standard: 0.8s ease-out;
+    --footer-padding: 1.25rem;
+    --border-day: rgb(78 53 45 / 13%);
+    --border-night: rgb(78 53 45 / 30%);
+    --timing-fn: cubic-bezier(0.455, 0.19, 0, 0.985);
 }
 
 /* Base styles */
@@ -54,7 +84,7 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background-color: var(--color-bg);
+
     color: var(--color-text);
     font-size: var(--font-size-body);
     line-height: var(--line-height);
@@ -120,8 +150,7 @@ ol {
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem; /* 20px / 16px */
-    border-left: 0.5px solid var(--color-border);
-    border-right: 0.5px solid var(--color-border);
+    width: 100%;
 }
 
 .socials {
@@ -152,9 +181,14 @@ ol {
 
 .logo .site-title {
     font-family: "Bricolage Grotesque", sans-serif;
-    font-size: 1rem; /* 16px / 16px */
+    font-size: 1rem;
     font-weight: 500;
     margin: 0;
+    color: #282828;
+    transition: color 1s var(--timing-fn);
+}
+
+.dark .logo .site-title {
     color: var(--color-white);
 }
 
@@ -167,11 +201,20 @@ ol {
 /* Styles des sections */
 section {
     width: 100%;
-    border-bottom: 0.5px solid #383838;
+    border-bottom: 1px solid var(--border-day);
     padding: 2.5rem 1.25rem; /* 40px 20px / 16px */
     display: flex;
     flex-direction: column;
     gap: 2.5rem; /* 40px / 16px */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, border-color 1s var(--timing-fn);
+    will-change: opacity, transform; /* Optimisation des performances */
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 section h1,
@@ -194,13 +237,14 @@ section h6 {
     width: 1.25rem; /* 20px / 16px */
     height: 1.25rem; /* 20px / 16px */
     border-radius: 0.25rem; /* 4px / 16px */
-    border: 0.5px solid var(--color-border);
+    border: 1px solid var(--border-day);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-text);
-    font-size: 0.625rem; /* 10px / 16px */
+    font-size: 1rem;
     text-decoration: none;
+    transition: border-color 1s var(--timing-fn);
 }
 
 .twitter-button:hover {
@@ -212,9 +256,12 @@ section h6 {
 }
 
 .site-footer {
-    border-left: 0.5px solid var(--color-border);
-    border-right: 0.5px solid var(--color-border);
+    border-left: none;
+    border-right: none;
     padding-top: 1.25rem; /* 20px / 16px */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .site-footer > div:first-child {
@@ -295,4 +342,489 @@ ul li::before {
         height: 1.875rem; /* 30px / 16px */
         font-size: 0.875rem; /* 14px / 16px */
     }
+}
+body {
+    --day: #f4e1c4;
+    --evening: #fccc83;
+    --dusk: #db7a2a;
+    --night: #0f0907;
+    --dawn: #140e0b;
+    --morning: #ae9681;
+
+    --light: var(--day);
+    --dark: var(--night);
+    --shadow: #1a1917;
+    --bounce-light: #f5d7a6;
+    --timing-fn: cubic-bezier(0.455, 0.19, 0, 0.985);
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--light);
+
+    animation-duration: 0s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+body.animation-ready {
+    animation-play-state: running;
+    animation-duration: 1s;
+    animation-name: sunrise;
+}
+
+body.animation-ready.dark {
+    animation-duration: 1.7s;
+    animation-name: sunset;
+}
+
+body.dark {
+    --light: var(--night);
+    --dark: var(--day);
+    --shadow: #070503;
+    --bounce-light: #573926;
+    --gradient-title: linear-gradient(to right, #feeed9, #a8a298);
+    --color-text: #8b8b8b;
+}
+
+@keyframes sunrise {
+    /* 0% {
+    background-color: var(--night);
+  }
+
+  10% {
+    background-color: var(--dawn);
+  }
+
+  35% {
+    background-color: var(--morning);
+  }
+*/
+
+    100% {
+        background-color: var(--day);
+    }
+}
+
+@keyframes sunset {
+    0% {
+        background-color: var(--day);
+    }
+
+    30% {
+        background-color: var(--evening);
+    }
+
+    60% {
+        background-color: var(--dusk);
+    }
+
+    90% {
+        background-color: var(--dawn);
+    }
+
+    100% {
+        background-color: var(--night);
+    }
+}
+
+#dappled-light {
+    pointer-events: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+#progressive-blur {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#progressive-blur > div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    backdrop-filter: blur(var(--blur-amount));
+    mask-image: linear-gradient(252deg, transparent, transparent var(--stop1), black var(--stop2), black);
+}
+
+#progressive-blur > div:nth-child(1) {
+    --blur-amount: 6px;
+    --stop1: 0%;
+    --stop2: 0%;
+}
+
+#progressive-blur > div:nth-child(2) {
+    --blur-amount: 12px;
+    --stop1: 40%;
+    --stop2: 80%;
+}
+
+#progressive-blur > div:nth-child(3) {
+    --blur-amount: 48px;
+    --stop1: 40%;
+    --stop2: 70%;
+}
+
+#progressive-blur > div:nth-child(4) {
+    --blur-amount: 96px;
+    --stop1: 70%;
+    --stop2: 80%;
+}
+
+#glow {
+    position: absolute;
+    background: linear-gradient(309deg, var(--bounce-light), var(--bounce-light) 20%, transparent);
+    transition: background 1s var(--timing-fn);
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+}
+
+#glow-bounce {
+    content: "";
+    position: absolute;
+    background: linear-gradient(355deg, var(--bounce-light) 0%, transparent 30%, transparent 100%);
+    transition: background 1s var(--timing-fn);
+    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+}
+
+.perspective {
+    position: absolute;
+    transition: transform 1.7s var(--timing-fn), opacity 4s ease;
+    top: -30vh;
+    right: 0;
+    width: 80vw;
+    height: 130vh;
+    opacity: 0.07;
+    background-blend-mode: darken;
+    transform-origin: top right;
+    transform-style: preserve-3d;
+    transform: matrix3d(0.75, -0.0625, 0, 0.0008, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+
+.dark .perspective {
+    opacity: 0.3;
+    transform: matrix3d(0.8333, 0.0833, 0, 0.0003, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+
+#leaves {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    bottom: -20px;
+    right: -700px;
+    width: 1600px;
+    height: 1400px;
+    background-image: url("./images/leaves.png");
+    filter: url(#wind);
+    animation: billow 8s ease-in-out infinite;
+}
+
+#blinds {
+    position: relative;
+    width: 100%;
+}
+
+#blinds .shutter,
+#blinds .bar {
+    background-color: var(--shadow);
+}
+
+#blinds > .shutters {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 60px;
+    transition: gap 1s var(--timing-fn);
+}
+
+.dark #blinds > .shutters {
+    gap: 20px;
+}
+
+#blinds > .vertical {
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.vertical > .bar {
+    width: 5;
+    height: 100%;
+}
+
+.shutter {
+    width: 100%;
+    height: 40px;
+    transition: height 1s var(--timing-fn);
+}
+
+.dark .shutter {
+    height: 80px;
+}
+
+@keyframes billow {
+    0% {
+        transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+    }
+
+    25% {
+        transform: perspective(400px) rotateX(1deg) rotateY(2deg) scale(1.02);
+    }
+
+    50% {
+        transform: perspective(400px) rotateX(-4deg) rotateY(-2deg) scale(0.97);
+    }
+
+    75% {
+        transform: perspective(400px) rotateX(1deg) rotateY(-1deg) scale(1.04);
+    }
+
+    100% {
+        transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+    }
+}
+
+/* États initiaux */
+.stripe-container,
+.site-header,
+main,
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Séquence d'animation */
+.show-structure main {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.show-stripe .stripe-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.show-logo .site-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation des sections initiales une par une */
+.show-content-0 .initial-section:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.show-content-1 .initial-section:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation au scroll */
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ajout du style pour le conteneur de character1 */
+.features .image-container {
+    position: relative;
+    transition: opacity 1s var(--timing-fn);
+}
+
+/* Ajout du style spécifique pour l'image  */
+.image-container img {
+    background-color: #1f140e;
+    transition: background-color 1s var(--timing-fn);
+}
+
+.dark .image-container img {
+    background-color: #1f140e00;
+}
+
+/* Modification des bordures pour le conteneur principal */
+.content-wrapper {
+    isolation: isolate;
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    border-left: 1px solid var(--border-day);
+    border-right: 1px solid var(--border-day);
+    transition: border-color 1s var(--timing-fn);
+}
+
+/* Modification des bordures pour les sections */
+section {
+    width: 100%;
+    border-bottom: 1px solid var(--border-day);
+    padding: 2.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, border-color 1s var(--timing-fn);
+    will-change: opacity, transform;
+}
+
+/* Modification des bordures en mode sombre */
+.dark .content-wrapper {
+    border-left: 1px solid var(--border-night);
+    border-right: 1px solid var(--border-night);
+}
+
+.dark section {
+    border-bottom: 1px solid var(--border-night);
+}
+
+/* Style pour l'image du footer - Utilisation de filter au lieu de background-color */
+.image-footer img {
+    filter: invert(1);
+    transition: filter 1s var(--timing-fn);
+}
+
+.dark .image-footer img {
+    filter: invert(0);
+}
+
+/* Modification du style pour la bande horizontale */
+.stripe-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgb(78 53 45 / 13%) 0 2.5px,
+        transparent 2.5px 7.5px,
+        rgb(78 53 45 / 10%) 7.5px 9.5px,
+        transparent 9.5px 14.5px,
+        rgb(78 53 45 / 8%) 14.5px 16px,
+        transparent 16px 21px,
+        rgb(78 53 45 / 6%) 21px 22px,
+        transparent 22px 27px,
+        rgb(78 53 45 / 4%) 27px 27.5px,
+        transparent 27.5px
+    );
+    transition: background 1s var(--timing-fn);
+}
+
+/* Ajout du style pour le mode sombre */
+.dark .stripe-container::before {
+    background: linear-gradient(
+        to bottom,
+        rgb(78 53 45) 0 2.5px,
+        transparent 2.5px 7.5px,
+        rgb(78 53 45 / 80%) 7.5px 9.5px,
+        transparent 9.5px 14.5px,
+        rgb(78 53 45 / 50%) 14.5px 16px,
+        transparent 16px 21px,
+        rgb(78 53 45 / 35%) 21px 22px,
+        transparent 22px 27px,
+        rgb(78 53 45 / 23%) 27px 27.5px,
+        transparent 27.5px
+    );
+    opacity: 0.3;
+}
+
+footer,
+.site-footer,
+.copyright {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+footer.visible,
+footer.visible .site-footer,
+footer.visible .copyright {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+/* Ajout des styles spécifiques pour le footer */
+.content-wrapper > footer {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.content-wrapper > footer.visible {
+    opacity: 1;
+}
+
+/* Assurons-nous que le footer est dans le flux normal */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Supprimer les styles en double et clarifier la hiérarchie */
+.content-wrapper > footer {
+    width: 100%;
+}
+
+/* Style unifié pour le footer et ses composants - sans translation */
+footer,
+.site-footer,
+.copyright {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Quand le footer devient visible */
+footer.visible,
+footer.visible .site-footer,
+footer.visible .copyright {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+/* Garder les styles spécifiques */
+.site-footer {
+    border-left: none;
+    border-right: none;
+    padding-top: 1.25rem;
+}
+
+.site-footer > div:first-child {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.copyright {
+    text-align: center;
+    padding: 0.625rem 0;
+    font-size: 0.8em;
+}
+
+/* Variables à ajouter */
+:root {
+    --border-color: rgb(78 53 45);
+    --border-opacity: 13%;
+    --transition-standard: 0.8s ease-out;
+    --footer-padding: 1.25rem;
+}
+
+/* Styles unifiés */
+.animated-element {
+    opacity: 0;
+    transition: all var(--transition-standard);
+}
+
+.border-standard {
+    border: 1px solid rgb(var(--border-color) / var(--border-opacity));
 }
