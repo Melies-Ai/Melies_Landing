@@ -153,3 +153,81 @@ document.addEventListener("keydown", function (event) {
 document.addEventListener("click", function () {
     toggle();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".subscription-container");
+    const button = form.querySelector(".subscribe-button");
+    const buttonText = button.querySelector(".subscribe-text");
+    const emailInput = form.querySelector(".email-input");
+
+    // Add spinner and check icon to button
+    const spinner = document.createElement("img");
+    spinner.src = "images/tail-spin.svg";
+    spinner.classList.add("spinner");
+
+    const checkIcon = document.createElement("img");
+    checkIcon.src = "images/check.svg";
+    checkIcon.classList.add("check-icon");
+
+    button.appendChild(spinner);
+    button.appendChild(checkIcon);
+
+    emailInput.addEventListener("input", () => {
+        button.disabled = false;
+        button.classList.remove("success");
+    });
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        console.log("submit");
+        // Disable button and input
+        button.disabled = true;
+        emailInput.disabled = true;
+
+        // Start loading state
+        button.classList.add("loading");
+
+        const startTime = Date.now();
+
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+            });
+
+            const elapsedTime = Date.now() - startTime;
+            const delay = Math.max(0, 1500 - elapsedTime);
+
+            setTimeout(() => {
+                if (!response.ok) {
+                    console.error("Subscription error:", error);
+                    // Reset to initial state on error
+                    button.classList.remove("loading");
+                    buttonText.textContent = "Try Again";
+                    button.disabled = false;
+                    emailInput.disabled = false;
+                    throw new Error("Subscription failed");
+                }
+
+                // Success state
+                button.classList.remove("loading");
+                button.classList.add("success");
+                emailInput.disabled = false;
+            }, delay);
+        } catch (error) {
+            const elapsedTime = Date.now() - startTime;
+            const delay = Math.max(0, 1500 - elapsedTime);
+
+            setTimeout(() => {
+                console.error("Subscription error:", error);
+                // Reset to initial state on error
+                button.classList.remove("loading");
+                buttonText.textContent = "Try Again";
+                button.disabled = false;
+                emailInput.disabled = false;
+            }, delay);
+        }
+    });
+});
