@@ -180,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        console.log("submit");
         // Disable button and input
         button.disabled = true;
         emailInput.disabled = true;
@@ -191,7 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const startTime = Date.now();
 
         try {
-            const formData = new FormData(form);
+            const formData = new FormData();
+            formData.append("fields[email]", emailInput.value);
             const response = await fetch(form.action, {
                 method: "POST",
                 body: formData,
