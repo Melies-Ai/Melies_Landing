@@ -885,3 +885,44 @@ footer.visible .copyright {
 .subscribe-button.success .subscribe-text {
     display: none;
 }
+
+.theme-toggle {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-day);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 1s var(--timing-fn);
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-accent);
+}
+
+.theme-toggle svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    color: var(--color-text);
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle .dark-icon {
+    display: none;
+}
+
+.theme-toggle .light-icon {
+    display: block;
+}
+
+.dark .theme-toggle .dark-icon {
+    display: block;
+}
+
+.dark .theme-toggle .light-icon {
+    display: none;
+}

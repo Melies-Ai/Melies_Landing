@@ -42,7 +42,6 @@ function updateContent(langData) {
 /* 
     Animation
 */
-
 function toggle() {
     document.body.classList.add("animation-ready");
     document.body.classList.toggle("dark");
@@ -92,6 +91,9 @@ const observers = {
     }, observerOptions.footer),
 };
 
+/* 
+    Main
+*/
 // Wait for the page to be fully loaded
 window.addEventListener("load", function () {
     // Initialize animation
@@ -142,19 +144,16 @@ window.addEventListener("load", function () {
     }, 700);
 });
 
-// Handle user interactions
-document.addEventListener("keydown", function (event) {
-    if (event.keyCode === 32) {
-        event.preventDefault();
-        toggle();
-    }
-});
-
-document.addEventListener("click", function () {
-    toggle();
-});
-
 document.addEventListener("DOMContentLoaded", () => {
+    /** Theme toggle */
+    const themeToggle = document.querySelector(".theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+            toggle();
+        });
+    }
+
+    /** Subscription form */
     const form = document.querySelector(".subscription-container");
     const button = form.querySelector(".subscribe-button");
     const buttonText = button.querySelector(".subscribe-text");
